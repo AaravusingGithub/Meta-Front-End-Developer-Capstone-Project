@@ -15,17 +15,18 @@ export default function BookingPage() {
 
   function submitForm(formData) {
     if (submitAPI(formData)) {
-      navigate("/confirmed");
+      // Pass the name to the confirmation page
+      navigate("/confirmed", { state: { name: formData.name } });
     }
   }
 
   return (
-    <main>
+    <section className="booking-page">
       <BookingForm
         availableTimes={availableTimes}
         dispatch={dispatch}
         submitForm={submitForm}
       />
-    </main>
+    </section>
   );
 }
